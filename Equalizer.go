@@ -3,6 +3,19 @@
  * feel free to share, copy and change
  */
 
+ /*
+ * VERSION 1.0
+ */
+
+ /* DESCRIPTION
+ This script will split (all) resources in equal parts to all planets/moons
+ @splitPlanetWorkers, define planets/moons use a donator
+ @splitMetal, true if you want to split metal, otherwise false
+ @splitCrystal, true if you want to split crystal, otherwise false
+ @splitDeuterium, true if you want to split deuterium, otherwise false
+ @roundFactor, will round down the res to send
+ */
+
 //####################### CONFIG #############################
 //############################################################
 splitPlanetWorkers                  = "allPlanets"
