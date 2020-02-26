@@ -78,3 +78,5 @@ func checkIfStorageIsFull() {
 		}
 	}
 }
+
+checkIfStorageIsFull()
