@@ -9,7 +9,15 @@
 
   /* DESCRIPTION
  This script will repatriate resources from planet to homeworld if a storage is full
+ @sendAllRes, true will send all res of planet, false just the res of full storage
+ @leaveDeuterium , will leave XX deuterium on planet
  */
+
+//#################### CONFIG ################################
+//############################################################
+sendAllRes = true
+leaveDeuterium = 100000
+//############################################################
 
 func repatriate(res, from) {
     myShips, _ = from.GetShips()
