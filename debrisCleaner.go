@@ -49,3 +49,5 @@ func collectDebris() {
 		}
 	}
 }
+
+collectDebris()
