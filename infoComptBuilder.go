@@ -112,16 +112,16 @@ func transformInfoComptToNinja(s) {
 func infoComptBuild(c, w, l) {
     if c == "0:0:0" {
         LogInfo("add to queue", c, w, l)
-        //err = AddItemToQueue(GetCachedCelestial(NewCoordinate(GetHomeWorld().GetCoordinate().Galaxy, GetHomeWorld().GetCoordinate().System, GetHomeWorld().GetCoordinate().Position, PLANET_TYPE)).ID, transformInfoComptToNinja(w), 0)
-        //if err != nil {
-        //    LogError("err adding to queu", err)
-        //}
+        err = AddItemToQueue(GetCachedCelestial(NewCoordinate(GetHomeWorld().GetCoordinate().Galaxy, GetHomeWorld().GetCoordinate().System, GetHomeWorld().GetCoordinate().Position, PLANET_TYPE)).ID, transformInfoComptToNinja(w), 0)
+        if err != nil {
+            LogError("err adding to queu", err)
+        }
     } else {
         LogInfo("add to queue", c, w, l)
-        //err = AddItemToQueue(GetCachedCelestial(c).ID, transformInfoComptToNinja(w), 0)
-        //if err != nil {
-        //    LogError("err adding to queu", err)
-        //}
+        err = AddItemToQueue(GetCachedCelestial(c).ID, transformInfoComptToNinja(w), 0)
+        if err != nil {
+            LogError("err adding to queu", err)
+        }
     }
 }
 
