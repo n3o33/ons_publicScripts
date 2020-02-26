@@ -1,3 +1,31 @@
+/* Copyright 2020 by n3o33 <discord n3o33#2384>
+ * Not proprietary and confidential, 
+ * feel free to share, copy and change
+ */
+
+ /*
+ * VERSION 1.0
+ */
+
+  /* DESCRIPTION
+ This script add the sugested build order from infoCompt3 to ninjas brain queue
+ @infoCompt, copy the whole infoComt suggested list here
+ */
+
+ //####################### CONFIG #############################
+//############################################################
+ infoCompt = `
+COPY YOUR INFOCOMPT3 HERE, START
+Sequence of mines/techno to build
+Planet	Mines	level
+.....
+.....
+.....
+.....
+COPY YOUR INFOCOMPT3 HERE, END  
+` // <------------ important 
+//############################################################
+
 STRING = import("strings")
 buildList = []
 func checkCoordinate(c, field) {
