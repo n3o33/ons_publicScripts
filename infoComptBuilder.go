@@ -1,31 +1,3 @@
-/* Copyright 2020 by n3o33 <discord n3o33#2384>
- * Not proprietary and confidential, 
- * feel free to share, copy and change
- */
-
- /*
- * VERSION 1.0
- */
-
-  /* DESCRIPTION
- This script add the sugested build order from infoCompt3 to ninjas brain queue
- @infoCompt, copy the whole infoComt suggested list here
- */
-
- //####################### CONFIG #############################
-//############################################################
- infoCompt = `
-COPY YOUR INFOCOMPT3 HERE, START
-Sequence of mines/techno to build
-Planet	Mines	level
-.....
-.....
-.....
-.....
-COPY YOUR INFOCOMPT3 HERE, END  
-` // <------------ important 
-//############################################################
-
 STRING = import("strings")
 buildList = []
 func checkCoordinate(c, field) {
@@ -58,30 +30,32 @@ func checkResearchName(s, field) {
 func parseBuildInfo(bi) {
     a = []
     for line in STRING.Split(bi, "\n") {
-        field = STRING.Fields(line)
-        if Atoi(field[0]) > 0 {
-            if len(field) == 5 {
-                coord = checkCoordinate(field[2], field)
-                checkBuildingName(field[3], field)
-                checkIfNumber(field[4], field)
-                a += { coord  : { field[3] : field[4] } }
-            } else if len(field) == 4 {
-                checkResearchName(field[1]+field[2], field)
-                checkIfNumber(field[3], field)
-                a += { "0:0:0" : { field[1]+field[2] : field[3] } }
-            } else if len(field) == 3 {
-                checkResearchName(field[1], field)
-                if STRING.Contains(field[2], "+") {
-                    for sub in STRING.Split(field[2], "+") {
-                        a += { "0:0:0" : { field[1] : sub } }
+        if len(line) > 0 {
+            field = STRING.Fields(line)
+            if Atoi(field[0]) > 0 {
+                if len(field) == 5 {
+                    coord = checkCoordinate(field[2], field)
+                    checkBuildingName(field[3], field)
+                    checkIfNumber(field[4], field)
+                    a += { coord  : { field[3] : field[4] } }
+                } else if len(field) == 4 {
+                    checkResearchName(field[1]+field[2], field)
+                    checkIfNumber(field[3], field)
+                    a += { "0:0:0" : { field[1]+field[2] : field[3] } }
+                } else if len(field) == 3 {
+                    checkResearchName(field[1], field)
+                    if STRING.Contains(field[2], "+") {
+                        for sub in STRING.Split(field[2], "+") {
+                            a += { "0:0:0" : { field[1] : sub } }
+                        }
+                    } else {
+                        checkIfNumber(field[2], field)
+                        a += { "0:0:0" : { field[1] : field[2] } }
                     }
                 } else {
-                    checkIfNumber(field[2], field)
-                    a += { "0:0:0" : { field[1] : field[2] } }
+                    LogError("unrecognized", field)
+                    StopScript(__FILE__)
                 }
-            } else {
-                LogError("unrecognized", field)
-                StopScript(__FILE__)
             }
         }
     }
@@ -110,16 +84,16 @@ func transformInfoComptToNinja(s) {
 func infoComptBuild(c, w, l) {
     if c == "0:0:0" {
         LogInfo("add to queue", c, w, l)
-        err = AddItemToQueue(GetCachedCelestial(NewCoordinate(GetHomeWorld().GetCoordinate().Galaxy, GetHomeWorld().GetCoordinate().System, GetHomeWorld().GetCoordinate().Position, PLANET_TYPE)).ID, transformInfoComptToNinja(w), 0)
-        if err != nil {
-            LogError("err adding to queu", err)
-        }
+        //err = AddItemToQueue(GetCachedCelestial(NewCoordinate(GetHomeWorld().GetCoordinate().Galaxy, GetHomeWorld().GetCoordinate().System, GetHomeWorld().GetCoordinate().Position, PLANET_TYPE)).ID, transformInfoComptToNinja(w), 0)
+        //if err != nil {
+        //    LogError("err adding to queu", err)
+        //}
     } else {
         LogInfo("add to queue", c, w, l)
-        err = AddItemToQueue(GetCachedCelestial(c).ID, transformInfoComptToNinja(w), 0)
-        if err != nil {
-            LogError("err adding to queu", err)
-        }
+        //err = AddItemToQueue(GetCachedCelestial(c).ID, transformInfoComptToNinja(w), 0)
+        //if err != nil {
+        //    LogError("err adding to queu", err)
+        //}
     }
 }
 
